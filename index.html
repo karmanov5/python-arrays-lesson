@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Массивы в Python — Урок</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Fira+Code:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- TOP PROGRESS BAR -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <button class="nav-btn" id="btn-prev">←</button>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <span class="slide-counter" id="slide-counter">1 / 12</span>
+            <button class="nav-btn" id="btn-next">→</button>
+        </div>
+    </div>
+
+    <!-- SLIDES WRAPPER -->
+    <div class="slides-wrapper" id="slides-wrapper">
+
+        <!-- ======== SLIDE 1: TITLE ======== -->
+        <div class="slide slide-hero" data-index="0">
+            <div class="slide-content center">
+                <div class="hero-emoji">🐍</div>
+                <h1 class="hero-title">Массивы в Python</h1>
+                <p class="hero-sub">Урок для 8 класса · Информатика</p>
+                <div class="hero-tags">
+                    <span class="tag">📦 Списки</span>
+                    <span class="tag">🔢 Индексы</span>
+                    <span class="tag">🔍 Алгоритмы</span>
+                </div>
+                <div class="hero-array-preview">
+                    <div class="ha-cell" style="--c:#6366f1">7</div>
+                    <div class="ha-cell" style="--c:#3b82f6">12</div>
+                    <div class="ha-cell" style="--c:#10b981">5</div>
+                    <div class="ha-cell" style="--c:#f59e0b">99</div>
+                    <div class="ha-cell" style="--c:#ef4444">3</div>
+                </div>
+                <p class="hero-hint">👇 Листай вниз, чтобы начать</p>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 2: ЧТО ТАКОЕ МАССИВ ======== -->
+        <div class="slide" data-index="1">
+            <div class="slide-content">
+                <h2><span class="slide-icon">🗄️</span> Что такое массив?</h2>
+                <div class="analogy-box">
+                    <p class="analogy-title">Представь коробку с ячейками 📦</p>
+                    <p>У тебя есть коробка с отдельными ячейками. В каждой ячейке лежит <strong>одно число</strong>.
+                        Коробка называется <strong>массив</strong>, а ячейка — <strong>элемент</strong>.</p>
+                </div>
+                <div class="labeled-array">
+                    <div class="arr-row-label top">значения ↓</div>
+                    <div class="visual-array">
+                        <div class="va-cell"><span class="va-val">7</span><span class="va-idx">0</span></div>
+                        <div class="va-cell"><span class="va-val">12</span><span class="va-idx">1</span></div>
+                        <div class="va-cell"><span class="va-val">5</span><span class="va-idx">2</span></div>
+                        <div class="va-cell"><span class="va-val">99</span><span class="va-idx">3</span></div>
+                        <div class="va-cell"><span class="va-val">3</span><span class="va-idx">4</span></div>
+                    </div>
+                    <div class="arr-row-label bottom">↑ индексы</div>
+                </div>
+                <div class="info-card">
+                    <p>В Python массив называется <strong>список (list)</strong>. Он может хранить числа, слова — всё
+                        что угодно. Но в задачах по информатике чаще всего хранят <strong>числа</strong>.</p>
+                </div>
+                <div class="key-fact">
+                    💡 <strong>Главное правило:</strong> нумерация ячеек начинается с <strong>нуля</strong>, а не с
+                    единицы!
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 3: ИНДЕКСЫ ======== -->
+        <div class="slide" data-index="2">
+            <div class="slide-content">
+                <h2><span class="slide-icon">🔢</span> Индексы — это номера ячеек</h2>
+                <p class="slide-intro">Каждая ячейка массива имеет свой <strong>номер — индекс</strong>. Именно по этому
+                    номеру мы обращаемся к нужной ячейке.</p>
+
+                <div class="visual-array big">
+                    <div class="va-cell active"><span class="va-val">7</span><span class="va-idx">A[0]</span></div>
+                    <div class="va-cell"><span class="va-val">12</span><span class="va-idx">A[1]</span></div>
+                    <div class="va-cell"><span class="va-val">5</span><span class="va-idx">A[2]</span></div>
+                    <div class="va-cell"><span class="va-val">99</span><span class="va-idx">A[3]</span></div>
+                    <div class="va-cell last"><span class="va-val">3</span><span class="va-idx">A[4]</span></div>
+                </div>
+
+                <div class="code-box">
+                    <pre><span class="cmt"># Массив из 5 элементов</span>
+A = [7, 12, 5, 99, 3]
+
+<span class="cmt"># Обращение к элементам</span>
+<span class="kw">print</span>(A[0])  <span class="cmt"># → 7  (первый!)</span>
+<span class="kw">print</span>(A[3])  <span class="cmt"># → 99</span>
+<span class="kw">print</span>(A[4])  <span class="cmt"># → 3  (последний)</span></pre>
+                </div>
+
+                <div class="warning-card">
+                    ⚠️ <strong>Частая ошибка:</strong> думать, что первый элемент — это A[1]. Нет! Первый — A[0], второй
+                    — A[1], и так далее.
+                </div>
+
+                <!-- INTERACTIVE: click cell to highlight -->
+                <p class="interactive-hint">👆 Нажми на ячейку, чтобы узнать её значение</p>
+                <div class="visual-array interactive" id="idx-demo">
+                    <div class="va-cell" data-v="7" data-i="0"><span class="va-val">7</span><span
+                            class="va-idx">A[0]</span></div>
+                    <div class="va-cell" data-v="12" data-i="1"><span class="va-val">12</span><span
+                            class="va-idx">A[1]</span></div>
+                    <div class="va-cell" data-v="5" data-i="2"><span class="va-val">5</span><span
+                            class="va-idx">A[2]</span></div>
+                    <div class="va-cell" data-v="99" data-i="3"><span class="va-val">99</span><span
+                            class="va-idx">A[3]</span></div>
+                    <div class="va-cell" data-v="3" data-i="4"><span class="va-val">3</span><span
+                            class="va-idx">A[4]</span></div>
+                </div>
+                <div class="idx-output" id="idx-output">Нажми на любую ячейку ☝️</div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 4: СОЗДАНИЕ ======== -->
+        <div class="slide" data-index="3">
+            <div class="slide-content">
+                <h2><span class="slide-icon">🛠️</span> Как создать массив?</h2>
+                <p class="slide-intro">Есть несколько способов. Выбери тот, который нужен в задаче.</p>
+
+                <div class="method-card">
+                    <div class="method-num">1</div>
+                    <div>
+                        <p class="method-title">Написать числа вручную</p>
+                        <div class="code-box small">
+                            <pre>A = [7, 12, 5, 99, 3]</pre>
+                        </div>
+                        <p class="method-desc">Все числа сразу. Используй, когда знаешь все элементы заранее.</p>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-num">2</div>
+                    <div>
+                        <p class="method-title">Пустой массив + добавление</p>
+                        <div class="code-box small">
+                            <pre>A = []
+A.append(7)   <span class="cmt"># добавить 7</span>
+A.append(12)  <span class="cmt"># добавить 12</span></pre>
+                        </div>
+                        <p class="method-desc"><code>append()</code> — добавляет новый элемент <strong>в конец</strong>
+                            массива.</p>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-num">3</div>
+                    <div>
+                        <p class="method-title">Заполнить нулями</p>
+                        <div class="code-box small">
+                            <pre>A = [0] * 5  <span class="cmt"># [0, 0, 0, 0, 0]</span></pre>
+                        </div>
+                        <p class="method-desc">Создаёт массив из 5 нулей. Удобно, когда нужны «пустые» ячейки.</p>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-num">4</div>
+                    <div>
+                        <p class="method-title">Случайные числа</p>
+                        <div class="code-box small">
+                            <pre><span class="kw">from</span> random <span class="kw">import</span> randint
+A = []
+<span class="kw">for</span> i <span class="kw">in</span> range(5):
+    A.append(randint(1, 100))</pre>
+                        </div>
+                        <p class="method-desc">Генерирует 5 случайных чисел от 1 до 100. Часто используется в задачах и
+                            тестах.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 5: LEN ======== -->
+        <div class="slide" data-index="4">
+            <div class="slide-content">
+                <h2><span class="slide-icon">📏</span> Размер массива: <code>len()</code></h2>
+                <p class="slide-intro">Функция <code>len(A)</code> возвращает <strong>количество элементов</strong> в
+                    массиве. Это очень важная функция!</p>
+
+                <div class="visual-array" id="len-demo-arr">
+                    <div class="va-cell"><span class="va-val">7</span><span class="va-idx">0</span></div>
+                    <div class="va-cell"><span class="va-val">12</span><span class="va-idx">1</span></div>
+                    <div class="va-cell"><span class="va-val">5</span><span class="va-idx">2</span></div>
+                    <div class="va-cell"><span class="va-val">99</span><span class="va-idx">3</span></div>
+                    <div class="va-cell"><span class="va-val">3</span><span class="va-idx">4</span></div>
+                </div>
+
+                <div class="code-box">
+                    <pre>A = [7, 12, 5, 99, 3]
+n = <span class="kw">len</span>(A)
+<span class="kw">print</span>(n)  <span class="cmt"># → 5</span></pre>
+                </div>
+
+                <div class="key-fact">
+                    💡 Индекс <strong>последнего</strong> элемента всегда = <code>len(A) - 1</code>.<br>
+                    Если в массиве 5 элементов → последний это <code>A[4]</code>
+                </div>
+
+                <div class="analogy-box">
+                    <p class="analogy-title">🎯 Зачем это нужно?</p>
+                    <p>Когда ты пишешь программу, ты часто не знаешь заранее, сколько элементов в массиве.
+                        <code>len()</code> даёт тебе это число, и ты можешь использовать его в цикле.
+                    </p>
+                </div>
+
+                <div class="code-box">
+                    <pre><span class="cmt"># Вывести последний элемент</span>
+<span class="kw">print</span>(A[<span class="kw">len</span>(A) - 1])  <span class="cmt"># → 3</span>
+
+<span class="cmt"># Или короче:</span>
+<span class="kw">print</span>(A[-1])  <span class="cmt"># → 3 (с конца!)</span></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 6: ЦИКЛ FOR ======== -->
+        <div class="slide" data-index="5">
+            <div class="slide-content">
+                <h2><span class="slide-icon">🔄</span> Перебор массива: цикл for</h2>
+                <p class="slide-intro">Чтобы обработать каждый элемент массива — нужно пройти по всем ячейкам по
+                    очереди. Для этого используют цикл <code>for</code>.</p>
+
+                <div class="code-box">
+                    <pre>A = [7, 12, 5, 99, 3]
+
+<span class="kw">for</span> i <span class="kw">in</span> range(<span class="kw">len</span>(A)):
+    <span class="kw">print</span>(A[i])</pre>
+                </div>
+
+                <div class="analogy-box">
+                    <p class="analogy-title">🗺️ Как это работает?</p>
+                    <p><code>range(len(A))</code> создаёт числа от 0 до 4 (то есть: 0, 1, 2, 3, 4).<br>
+                        На каждом шаге <code>i</code> равно очередному числу.<br>
+                        <code>A[i]</code> — значение элемента с этим номером.
+                    </p>
+                </div>
+
+                <!-- ANIMATION OF LOOP -->
+                <p class="interactive-hint">▶️ Нажми, чтобы увидеть, как работает цикл</p>
+                <div class="visual-array interactive" id="loop-arr">
+                    <div class="va-cell"><span class="va-val">7</span><span class="va-idx">A[0]</span></div>
+                    <div class="va-cell"><span class="va-val">12</span><span class="va-idx">A[1]</span></div>
+                    <div class="va-cell"><span class="va-val">5</span><span class="va-idx">A[2]</span></div>
+                    <div class="va-cell"><span class="va-val">99</span><span class="va-idx">A[3]</span></div>
+                    <div class="va-cell"><span class="va-val">3</span><span class="va-idx">A[4]</span></div>
+                </div>
+                <div class="loop-controls">
+                    <button class="btn-action" id="btn-loop-play">▶ Запустить цикл</button>
+                    <button class="btn-outline-sm" id="btn-loop-reset">Сброс</button>
+                </div>
+                <div class="loop-output" id="loop-output">Нажми ▶ чтобы запустить</div>
+                <div class="loop-console" id="loop-console"></div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 7: СУММА ======== -->
+        <div class="slide" data-index="6">
+            <div class="slide-content">
+                <h2><span class="slide-icon">➕</span> Сумма элементов</h2>
+                <p class="slide-intro">Нам нужно сложить все числа в массиве. Как это сделать программно?</p>
+
+                <div class="analogy-box">
+                    <p class="analogy-title">🧮 Способ 1: Вручную (через цикл)</p>
+                    <p>Заводим переменную-копилку <code>s = 0</code> и добавляем к ней каждый элемент по очереди.</p>
+                </div>
+
+                <div class="code-box">
+                    <pre>A = [7, 12, 5, 99, 3]
+
+s = 0  <span class="cmt"># копилка для суммы</span>
+<span class="kw">for</span> i <span class="kw">in</span> range(<span class="kw">len</span>(A)):
+    s = s + A[i]
+
+<span class="kw">print</span>(s)  <span class="cmt"># → 126</span></pre>
+                </div>
+
+                <div class="step-trace">
+                    <p class="step-title">Как меняется s на каждом шаге:</p>
+                    <div class="step-row"><span class="step-i">i=0:</span> <span class="step-c">s = 0 + 7 =
+                            <strong>7</strong></span></div>
+                    <div class="step-row"><span class="step-i">i=1:</span> <span class="step-c">s = 7 + 12 =
+                            <strong>19</strong></span></div>
+                    <div class="step-row"><span class="step-i">i=2:</span> <span class="step-c">s = 19 + 5 =
+                            <strong>24</strong></span></div>
+                    <div class="step-row"><span class="step-i">i=3:</span> <span class="step-c">s = 24 + 99 =
+                            <strong>123</strong></span></div>
+                    <div class="step-row"><span class="step-i">i=4:</span> <span class="step-c">s = 123 + 3 =
+                            <strong>126</strong></span></div>
+                </div>
+
+                <div class="analogy-box green">
+                    <p class="analogy-title">⚡ Способ 2: Встроенная функция</p>
+                    <div class="code-box small">
+                        <pre>s = <span class="kw">sum</span>(A)
+<span class="kw">print</span>(s)  <span class="cmt"># → 126</span></pre>
+                    </div>
+                    <p>Python умеет сам считать сумму — функция <code>sum()</code>. Но в задачах по информатике часто
+                        просят написать алгоритм <strong>вручную</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 8: ПОДСЧЁТ ======== -->
+        <div class="slide" data-index="7">
+            <div class="slide-content">
+                <h2><span class="slide-icon">🔢</span> Подсчёт элементов</h2>
+                <p class="slide-intro">Иногда нужно посчитать, <strong>сколько элементов</strong> в массиве
+                    удовлетворяет какому-то условию. Например, сколько чисел больше 10.</p>
+
+                <div class="analogy-box">
+                    <p class="analogy-title">🧮 Алгоритм подсчёта</p>
+                    <p>Заводим переменную-счётчик <code>k = 0</code>. На каждом шаге проверяем условие. Если оно
+                        выполнено — добавляем 1 к счётчику.</p>
+                </div>
+
+                <div class="code-box">
+                    <pre>A = [7, 12, 5, 99, 3]
+
+k = 0  <span class="cmt"># счётчик</span>
+<span class="kw">for</span> i <span class="kw">in</span> range(<span class="kw">len</span>(A)):
+    <span class="kw">if</span> A[i] &gt; 10:
+        k = k + 1
+
+<span class="kw">print</span>(k)  <span class="cmt"># → 2  (это 12 и 99)</span></pre>
+                </div>
+
+                <div class="step-trace">
+                    <p class="step-title">Пошагово:</p>
+                    <div class="step-row"><span class="step-i">A[0]=7</span> <span class="step-c">7 &gt; 10? Нет. k =
+                            <strong>0</strong></span></div>
+                    <div class="step-row ok"><span class="step-i">A[1]=12</span> <span class="step-c">12 &gt; 10? Да! k
+                            = <strong>1</strong></span></div>
+                    <div class="step-row"><span class="step-i">A[2]=5</span> <span class="step-c">5 &gt; 10? Нет. k =
+                            <strong>1</strong></span></div>
+                    <div class="step-row ok"><span class="step-i">A[3]=99</span> <span class="step-c">99 &gt; 10? Да! k
+                            = <strong>2</strong></span></div>
+                    <div class="step-row"><span class="step-i">A[4]=3</span> <span class="step-c">3 &gt; 10? Нет. k =
+                            <strong>2</strong></span></div>
+                </div>
+
+                <div class="key-fact">
+                    💡 <code>k = k + 1</code> можно записать короче: <code>k += 1</code> — они означают одно и то же.
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 9: МАКСИМУМ ======== -->
+        <div class="slide" data-index="8">
+            <div class="slide-content">
+                <h2><span class="slide-icon">🏆</span> Поиск максимума и минимума</h2>
+                <p class="slide-intro">Как найти наибольшее или наименьшее число в массиве?</p>
+
+                <div class="analogy-box">
+                    <p class="analogy-title">🏅 Алгоритм поиска максимума</p>
+                    <p>Представь, что ты устраиваешь соревнование. Берёшь первого участника и говоришь: «Пока ты —
+                        чемпион». Затем по очереди сравниваешь его с каждым следующим. Нашёл кого-то сильнее — новый
+                        чемпион!</p>
+                </div>
+
+                <div class="code-box">
+                    <pre>A = [7, 12, 5, 99, 3]
+
+maximum = A[0]  <span class="cmt"># первый - чемпион</span>
+<span class="kw">for</span> i <span class="kw">in</span> range(1, <span class="kw">len</span>(A)):
+    <span class="kw">if</span> A[i] &gt; maximum:
+        maximum = A[i]
+
+<span class="kw">print</span>(maximum)  <span class="cmt"># → 99</span></pre>
+                </div>
+
+                <!-- INTERACTIVE MAX FINDER -->
+                <p class="interactive-hint">▶️ Нажимай шаг за шагом</p>
+                <div class="visual-array" id="max-arr-vis">
+                    <div class="va-cell"><span class="va-val">7</span><span class="va-idx">A[0]</span></div>
+                    <div class="va-cell"><span class="va-val">12</span><span class="va-idx">A[1]</span></div>
+                    <div class="va-cell"><span class="va-val">5</span><span class="va-idx">A[2]</span></div>
+                    <div class="va-cell"><span class="va-val">99</span><span class="va-idx">A[3]</span></div>
+                    <div class="va-cell"><span class="va-val">3</span><span class="va-idx">A[4]</span></div>
+                </div>
+                <div class="max-status">Текущий чемпион: <span class="champ-badge" id="champ-val">?</span></div>
+                <div class="loop-controls">
+                    <button class="btn-action" id="btn-max-step">Следующий шаг</button>
+                    <button class="btn-outline-sm" id="btn-max-reset">Сброс</button>
+                </div>
+                <div class="loop-output" id="max-log">Нажми «Следующий шаг» для старта</div>
+
+                <div class="analogy-box green" style="margin-top:1.5rem">
+                    <p class="analogy-title">⚡ Встроенные функции Python</p>
+                    <div class="code-box small">
+                        <pre><span class="kw">print</span>(<span class="kw">max</span>(A))  <span class="cmt"># → 99</span>
+<span class="kw">print</span>(<span class="kw">min</span>(A))  <span class="cmt"># → 3</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 10: ВСТРОЕННЫЕ ФУНКЦИИ ======== -->
+        <div class="slide" data-index="9">
+            <div class="slide-content">
+                <h2><span class="slide-icon">🪄</span> Суперсилы Python</h2>
+                <p class="slide-intro">Python уже умеет делать всё сам! Вот встроенные функции для работы с массивами:
+                </p>
+
+                <div class="func-card">
+                    <div class="func-name">sum(A)</div>
+                    <div class="func-desc">Сумма всех элементов<br><code>sum([7,12,5,99,3]) → 126</code></div>
+                </div>
+                <div class="func-card">
+                    <div class="func-name">min(A)</div>
+                    <div class="func-desc">Минимальный элемент<br><code>min([7,12,5,99,3]) → 3</code></div>
+                </div>
+                <div class="func-card">
+                    <div class="func-name">max(A)</div>
+                    <div class="func-desc">Максимальный элемент<br><code>max([7,12,5,99,3]) → 99</code></div>
+                </div>
+                <div class="func-card">
+                    <div class="func-name">sorted(A)</div>
+                    <div class="func-desc">Сортировка (новый
+                        список)<br><code>sorted([7,12,5,99,3]) → [3,5,7,12,99]</code></div>
+                </div>
+                <div class="func-card">
+                    <div class="func-name">A.sort()</div>
+                    <div class="func-desc">Сортировка на месте (меняет A)<br><code>A.sort() # [3,5,7,12,99]</code></div>
+                </div>
+                <div class="func-card">
+                    <div class="func-name">len(A)</div>
+                    <div class="func-desc">Количество элементов<br><code>len([7,12,5,99,3]) → 5</code></div>
+                </div>
+
+                <div class="key-fact">
+                    💡 Знание этих функций сэкономит тебе кучу времени! Но умение написать <strong>алгоритм
+                        вручную</strong> — важный навык программиста.
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 11: ШПАРГАЛКА ======== -->
+        <div class="slide" data-index="10">
+            <div class="slide-content">
+                <h2><span class="slide-icon">📋</span> Шпаргалка</h2>
+                <p class="slide-intro">Всё самое важное на одной странице</p>
+
+                <div class="cheat-table">
+                    <div class="ct-row head"><span>Операция</span><span>Код</span></div>
+                    <div class="ct-row"><span>Создать массив</span><span><code>A = [1, 2, 3]</code></span></div>
+                    <div class="ct-row"><span>Добавить элемент</span><span><code>A.append(x)</code></span></div>
+                    <div class="ct-row"><span>Длина массива</span><span><code>n = len(A)</code></span></div>
+                    <div class="ct-row"><span>Первый элемент</span><span><code>A[0]</code></span></div>
+                    <div class="ct-row"><span>Последний элемент</span><span><code>A[-1]</code></span></div>
+                    <div class="ct-row"><span>Перебор (индекс)</span><span><code>for i in range(len(A))</code></span>
+                    </div>
+                    <div class="ct-row"><span>Сумма</span><span><code>sum(A)</code></span></div>
+                    <div class="ct-row"><span>Максимум</span><span><code>max(A)</code></span></div>
+                    <div class="ct-row"><span>Минимум</span><span><code>min(A)</code></span></div>
+                    <div class="ct-row"><span>Сортировка</span><span><code>sorted(A)</code></span></div>
+                    <div class="ct-row"><span>Накоп. сумма</span><span><code>s += A[i]</code></span></div>
+                    <div class="ct-row"><span>Счётчик</span><span><code>k += 1</code></span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 12: ТЕСТ ======== -->
+        <div class="slide slide-test" data-index="11">
+            <div class="slide-content">
+                <h2><span class="slide-icon">📝</span> Проверь себя!</h2>
+
+                <!-- Intro form -->
+                <div id="test-intro">
+                    <p class="slide-intro">Введи своё имя и фамилию, чтобы начать тест. 8 вопросов по всему уроку.</p>
+                    <form id="test-form">
+                        <input type="text" id="stu-name" placeholder="Имя" value="Аксинья" required class="test-input">
+                        <input type="text" id="stu-surname" placeholder="Фамилия" value="Асмакова" required
+                            class="test-input">
+                        <button type="submit" class="btn-action large">Начать тест →</button>
+                    </form>
+                </div>
+
+                <!-- Quiz area -->
+                <div id="test-quiz" class="hidden">
+                    <div class="q-progress-bar">
+                        <div id="q-fill"></div>
+                    </div>
+                    <p class="q-num" id="q-num">Вопрос 1 из 8</p>
+                    <p class="q-text" id="q-text"></p>
+                    <div id="q-options"></div>
+                    <div class="q-feedback hidden" id="q-feedback"></div>
+                </div>
+
+                <!-- Result -->
+                <div id="test-result" class="hidden result-block">
+                    <div class="result-circle" id="result-circle">
+                        <span id="result-score-txt">0/8</span>
+                    </div>
+                    <p class="result-name" id="result-name"></p>
+                    <p class="result-msg" id="result-msg"></p>
+                    <button class="btn-outline-sm" id="btn-restart" style="margin-top:1.5rem">Пройти заново</button>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /slides-wrapper -->
+
+    <script src="script.js"></script>
+</body>
+
+</html>
